@@ -16,27 +16,25 @@ infile = "alice-in-wonderland.txt"
 line = 0
 
 # Opening the file, also using utf8 because of some weird characters in the file
-fin = open(infile, encoding="utf8")
 
-# Reading the file into the variable content 
-content = fin.read()
+with open(infile, encoding="utf8") as fin:
 
-# Grabing the lines that are in parenthesis
-match = (re.findall('\((.*?)\)', content))  
+    # Reading the file into the variable content 
+    content = fin.read()
 
-# Sorting the match in alphabetical order, using lower for precedence 
-match = sorted(match, key=lambda word: word.lower())
+    # Grabing the lines that are in parenthesis
+    match = (re.findall('\((.*?)\)', content))  
 
-# Looping through match to print and than split that line to grab word count
-for i in range(len(match)):
-    print(match[i], len(match[i].split()))
-    line+= 1
+    # Sorting the match in alphabetical order, using lower for precedence 
+    match = sorted(match, key=lambda word: word.lower())
 
-# Does whitespace count?
-print(line)
-# Closing file, I was curious as to why we actually have to close the file in python so I looked it up and found this forum: 
-# https://stackoverflow.com/questions/25070854/why-should-i-close-files-in-python. I thought it was pretty interesting what othe people thought.
-fin.close()
+    # Looping through match to print and than split that line to grab word count
+    for i in range(len(match)):
+        print(match[i], "| Length: ", len(match[i].split()), '\n')
+        line+= 1
+
+    # Does whitespace count?
+    print(line)
 
 
 

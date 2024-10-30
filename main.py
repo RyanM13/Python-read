@@ -33,7 +33,7 @@ with open(infile, encoding="utf8") as fin:
         print(match[i], "| Length: ", len(match[i].split()), '\n')
         line+= 1
 
-    # Does whitespace count?
+    # printing the lines with words on them, ignoring white space.
     print(line)
 
 
